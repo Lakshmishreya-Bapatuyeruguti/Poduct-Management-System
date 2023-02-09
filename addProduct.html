@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <h1 class="title">ProZon</h1>
+        <a href="/index.html">View Products</a>
+      </div>
+      <div class="productForm">
+        <form action="#" class="productsForm">
+          <input type="text" placeholder="Product Id" class="apId" />
+          <input type="text" placeholder="Product Name" class="apName" />
+          <input type="file" value="" />
+          <input type="text" placeholder="Product Price" class="apPrice" />
+          <input type="text" placeholder="Product Description" class="apDesc" />
+          <input
+            type="submit"
+            value="Add Product"
+            onclick="addedProduct()"
+            class="addOrEditBtn"
+          />
+        </form>
+      </div>
+      <div class="displayProducts">
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+        <p class="idP">Product Id:</p>
+
+        <p class="nameP">Product Name:</p>
+        <span>Product Image: <img class="productImg" /></span>
+        <p class="priceP">Product Price:</p>
+        <p class="descP">Product Desc:</p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

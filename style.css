@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.navabar {
+  display: flex;
+  justify-content: space-around;
+}
+.productsForm {
+  width: 30%;
+}
+.productsForm {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
