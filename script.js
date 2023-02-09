@@ -3,7 +3,7 @@ let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
 if (!productsAvailable) {
   const products = [
     {
-      productId: "1",
+      productId: "01",
       productName: "laptop",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
@@ -43,6 +43,12 @@ function fetchFromStorage() {
 }
 
 function addedProduct() {
+  //   console.log(ID);
+
+  //   ID = ID + 1;
+  let gId = localStorage.getItem("id");
+  localStorage.setItem("id", +gId + 1);
+  gId = localStorage.getItem("id");
   let changeBtn = document.querySelector(".addOrEditBtn");
 
   const sentProdId = document.querySelector(".apId");
@@ -51,7 +57,7 @@ function addedProduct() {
   const sentProdPrice = document.querySelector(".apPrice");
   const sentProdDesc = document.querySelector(".apDesc");
   const addProdObj = {
-    productId: sentProdId.value,
+    productId: `${gId}`,
     productName: sentProdName.value,
     productImg:
       "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
