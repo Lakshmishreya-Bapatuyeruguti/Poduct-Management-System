@@ -45,7 +45,7 @@ function fetchFromStorage() {
 
 function addedProduct() {
   //   console.log(ID);
-
+  letImgVal = "";
   //   ID = ID + 1;
   let gId = localStorage.getItem("id");
   localStorage.setItem("id", +gId + 1);
@@ -57,6 +57,10 @@ function addedProduct() {
   const sentProdImg = document.querySelector(".apImg");
   const sentProdPrice = document.querySelector(".apPrice");
   const sentProdDesc = document.querySelector(".apDesc");
+  if (sentProdImg.value === "") {
+    sentProdImg.value =
+      "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100";
+  }
   const addProdObj = {
     productId: `${gId}`,
     productName: sentProdName.value,
@@ -64,7 +68,7 @@ function addedProduct() {
     productPrice: sentProdPrice.value,
     productDesc: sentProdDesc.value,
   };
-  // "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100";
+  // ;
   if (changeBtn.value === "Save Changes") {
     let myProducts = JSON.parse(localStorage.getItem("productsList"));
 
