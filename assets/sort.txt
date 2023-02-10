@@ -1,0 +1,106 @@
+ console.log(productsRecieved.length);
+  if (document.getElementById("h2l").unchecked) {
+    toggle = 0;
+    console.log(productsRecieved.length);
+  }
+
+  if (document.getElementById("h2l").checked) {
+    productsRecieved.sort((a, b) => {
+      return a.productPrice - b.productPrice;
+    });
+
+    for (let i = 0; i < productsRecieved.length - 1; i++) {
+      const parentProductDisplay = document.querySelector(".displayProducts");
+      const clone = parentProductDisplay.cloneNode(true);
+      parentProductDisplay.after(clone);
+      console.log(productsRecieved.length);
+    }
+
+    const id = document.querySelectorAll(".idP");
+    const pName = document.querySelectorAll(".nameP");
+    const img = document.querySelectorAll(".productImg");
+    const price = document.querySelectorAll(".priceP");
+    const desc = document.querySelectorAll(".descP");
+
+    for (let i = 0; i < productsRecieved.length; i++) {
+      id[i].textContent = productsRecieved[i].productId;
+      pName[i].textContent = productsRecieved[i].productName.toUpperCase();
+      img[i].src = productsRecieved[i].productImg;
+      price[i].textContent = productsRecieved[i].productPrice;
+      desc[i].textContent = productsRecieved[i].productDesc;
+    }
+  } else if (document.getElementById("l2h").checked) {
+    productsRecieved.sort((b, a) => {
+      return a.productPrice - b.productPrice;
+    });
+
+    for (let i = 0; i < productsRecieved.length - 1; i++) {
+      const parentProductDisplay = document.querySelector(".displayProducts");
+      const clone = parentProductDisplay.cloneNode(true);
+      parentProductDisplay.after(clone);
+    }
+    const id = document.querySelectorAll(".idP");
+    const pName = document.querySelectorAll(".nameP");
+    const img = document.querySelectorAll(".productImg");
+    const price = document.querySelectorAll(".priceP");
+    const desc = document.querySelectorAll(".descP");
+
+    for (let i = 0; i < productsRecieved.length; i++) {
+      id[i].textContent = productsRecieved[i].productId;
+      pName[i].textContent = productsRecieved[i].productName.toUpperCase();
+      img[i].src = productsRecieved[i].productImg;
+      price[i].textContent = productsRecieved[i].productPrice;
+      desc[i].textContent = productsRecieved[i].productDesc;
+    }
+
+
+
+
+
+
+
+    function validate() {
+  if (document.getElementById("h2l").checked) {
+    toggle = 1;
+    fetchFromStorage();
+  }
+  if (!document.getElementById("h2l").checked) {
+    toggle = 0;
+  }
+  if (document.getElementById("l2h").checked) {
+    toggle = 1;
+    fetchFromStorage();
+  }
+  if (!document.getElementById("l2h").checked) {
+    toggle = 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+*************************
+ if (document.getElementById("h2l").checked) {
+    const productsRecieved = JSON.parse(localStorage.getItem("productsList"));
+    productsRecieved.sort((b, a) => {
+      return a.productPrice - b.productPrice;
+    });
+  }
+  if (document.getElementById("l2h").checked) {
+    const productsRecieved = JSON.parse(localStorage.getItem("productsList"));
+    console.log("ooooooooo");
+    console.log(productsRecieved);
+
+    productsRecieved.sort((a, b) => {
+      return a.productPrice - b.productPrice;
+    });
+  }
+
+   

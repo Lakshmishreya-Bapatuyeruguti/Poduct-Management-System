@@ -5,20 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <div class="navbar">
         <h1 class="title">ProZon</h1>
-        <input type="text" value="" id="searchVal" />
+        <div class="searchBox">
+          <input type="text" value="" id="searchVal" /><button
+            onclick="filter()"
+          >
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
         <a class="navLink" href="/addProduct.html">Add Product</a>
       </div>
       <div class="sortBox">
-        <label for="sH2L">Low To High </label>
+        <label for="sH2L">High to Low </label>
         <input type="checkbox" name="sH2L" id="h2l" onclick="validate() " />
-        <label for="sL2H">High to Low </label>
+        <br />
+        <label for="sL2H">Low To High </label>
         <input type="checkbox" name="sL2H" id="l2h" onclick="validate() " />
+        <br />
+        <label for="sH2L">By Name</label>
+        <input type="checkbox" name="sH2L" id="byName" onclick="validate() " />
+        <br />
+        <label for="sL2H">By Id</label>
+        <input type="checkbox" name="sL2H" id="byId" onclick="validate() " />
       </div>
       <div class="wrapper">
         <div class="displayProducts">
@@ -29,12 +46,9 @@
           <p class="priceP para p3">$</p>
 
           <p class="descP para p4"></p>
-          <button class="edit">
-            <a href="/addProduct.html" class="edBtn">Edit</a>
-          </button>
-          <button class="delete">
-            <a href="/addProduct.html" class="delBtn">Delete</a>
-          </button>
+          <!-- <button class="edit">
+            <a href="/addProduct.html" class="edBtn">Modify</a>
+          </button> -->
         </div>
       </div>
     </div>

@@ -1,10 +1,13 @@
 let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
 let searchValue = document.getElementById("searchVal");
+let intial = 0;
+let searchToggle = 0;
+let prevItems;
 // let searchToggle=0;
 if (!productsAvailable) {
   const products = [
     {
-      productId: "01",
+      productId: "100",
       productName: "laptop",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
@@ -14,15 +17,55 @@ if (!productsAvailable) {
   ];
   //setting to local strorage
   localStorage.setItem("productsList", JSON.stringify(products));
-  // fetchFromStorage();
+  fetchFromStorage();
+} else {
+  if (intial === 0) {
+    intial = 1;
+
+    fetchFromStorage();
+  } else {
+    localStorage.setItem("productsList", JSON.stringify(prevItems));
+  }
 }
-
-fetchFromStorage();
-
 function fetchFromStorage() {
   //getting from local storage
 
   const productsRecieved = JSON.parse(localStorage.getItem("productsList"));
+  if (document.getElementById("h2l").checked) {
+    productsRecieved.sort((a, b) => {
+      return b.productPrice - a.productPrice;
+    });
+    document.querySelector(".displayProducts").style.display = "none";
+  }
+  if (document.getElementById("l2h").checked) {
+    productsRecieved.sort((a, b) => {
+      return a.productPrice - b.productPrice;
+    });
+    document.querySelector(".displayProducts").style.display = "none";
+  }
+  if (document.getElementById("byName").checked) {
+    document.querySelector(".displayProducts").style.display = "none";
+    productsRecieved.sort((a, b) => {
+      return a.productName - b.productName;
+    });
+  }
+  if (document.getElementById("byId").checked) {
+    productsRecieved.sort((a, b) => {
+      return a.productId - b.productId;
+    });
+    document.querySelector(".displayProducts").style.display = "none";
+  }
+  if (document.getElementById("byId").checked) {
+    productsRecieved.sort((a, b) => {
+      return a.productId - b.productId;
+    });
+    document.querySelector(".displayProducts").style.display = "none";
+  }
+
+  localStorage.setItem("productsList", JSON.stringify(productsRecieved));
+  console.log(productsRecieved);
+
+  // console.log(productsRecieved);
   for (let i = 0; i < productsRecieved.length - 1; i++) {
     const parentProductDisplay = document.querySelector(".displayProducts");
     const clone = parentProductDisplay.cloneNode(true);
@@ -33,13 +76,12 @@ function fetchFromStorage() {
   const img = document.querySelectorAll(".productImg");
   const price = document.querySelectorAll(".priceP");
   const desc = document.querySelectorAll(".descP");
-
   for (let i = 0; i < productsRecieved.length; i++) {
-    id[i].textContent += productsRecieved[i].productId;
-    pName[i].textContent += productsRecieved[i].productName.toUpperCase();
+    id[i].textContent = productsRecieved[i].productId;
+    pName[i].textContent = productsRecieved[i].productName.toUpperCase();
     img[i].src = productsRecieved[i].productImg;
-    price[i].textContent += productsRecieved[i].productPrice;
-    desc[i].textContent += productsRecieved[i].productDesc;
+    price[i].textContent = productsRecieved[i].productPrice;
+    desc[i].textContent = productsRecieved[i].productDesc;
   }
 }
 
@@ -103,7 +145,7 @@ for (let prod of dispProducts) {
       const prodPriceInp = document.querySelector(".apPrice");
       const prodDescInp = document.querySelector(".apDesc");
       let currSelectedId =
-        e.target.nextElementSibling.nextElementSibling.textContent.slice(11);
+        e.target.nextElementSibling.nextElementSibling.textContent;
       let myProducts = JSON.parse(localStorage.getItem("productsList"));
 
       for (let i = 0; i < myProducts.length; i++) {
@@ -119,7 +161,7 @@ for (let prod of dispProducts) {
       }
     }
     if (e.target.classList.contains("delete")) {
-      let currSelectedId = e.target.nextElementSibling.textContent.slice(11);
+      let currSelectedId = e.target.nextElementSibling.textContent;
       console.log(currSelectedId);
       let myProducts = JSON.parse(localStorage.getItem("productsList"));
       for (let i = 0; i < myProducts.length; i++) {
@@ -132,3 +174,69 @@ for (let prod of dispProducts) {
     }
   });
 }
+
+function validate() {
+  const allProducts = document.querySelectorAll(".displayProducts");
+  if (document.getElementById("h2l").checked) {
+    fetchFromStorage();
+  }
+
+  if (document.getElementById("l2h").checked) {
+    fetchFromStorage();
+  }
+  if (document.getElementById("byName").checked) {
+    fetchFromStorage();
+  }
+
+  if (document.getElementById("byId").checked) {
+    fetchFromStorage();
+  }
+  location.reload();
+}
+
+// function filter() {
+//   const searchedProducts = [];
+//   console.log(searchValue);
+//   if (searchValue.value) {
+//     searchToggle = 1;
+//     let myProducts = JSON.parse(localStorage.getItem("productsList"));
+//     for (let i = 0; i < myProducts.length; i++) {
+//       if (
+//         myProducts[i].productName.includes(
+//           searchValue.value.toLowerCase().trim()
+//         )
+//       ) {
+//         searchedProducts.push(myProducts[i]);
+//       }
+//     }
+//     console.log("searched:", searchedProducts);
+//     // fetchFromStorage();
+//     prevItems = JSON.parse(localStorage.getItem("productsList"));
+//     localStorage.setItem("filteredList", JSON.stringify(searchedProducts));
+//     searchToggle = 1;
+//     console.log("working");
+//     const filProd = JSON.parse(localStorage.getItem("filteredList"));
+
+//     // console.log(productsRecieved);
+//     console.log("filptod", filProd);
+//     for (let i = 0; i < filProd.length - 1; i++) {
+//       const parentProductDisplay = document.querySelector(".displayProducts");
+//       const clone = parentProductDisplay.cloneNode(true);
+//       parentProductDisplay.after(clone);
+//       console.log("inside");
+//     }
+//     const id = document.querySelectorAll(".idP");
+//     const pName = document.querySelectorAll(".nameP");
+//     const img = document.querySelectorAll(".productImg");
+//     const price = document.querySelectorAll(".priceP");
+//     const desc = document.querySelectorAll(".descP");
+//     for (let i = 0; i < filProd; i++) {
+//       id[i].textContent = filProd[i].productId;
+//       pName[i].textContent = filProd[i].productName.toUpperCase();
+//       img[i].src = filProd[i].productImg;
+//       price[i].textContent = filProd[i].productPrice;
+//       desc[i].textContent = filProd[i].productDesc;
+//     }
+//   }
+//   // location.reload();
+// }
