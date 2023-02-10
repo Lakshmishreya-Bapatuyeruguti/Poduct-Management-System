@@ -1,7 +1,7 @@
 let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
 let searchValue = document.getElementById("searchVal");
 let intial = 0;
-let searchToggle = 0;
+let searchArr = [];
 let prevItems;
 // let searchToggle=0;
 if (!productsAvailable) {
@@ -30,7 +30,7 @@ if (!productsAvailable) {
 function fetchFromStorage() {
   //getting from local storage
 
-  const productsRecieved = JSON.parse(localStorage.getItem("productsList"));
+  let productsRecieved = JSON.parse(localStorage.getItem("productsList"));
   if (document.getElementById("h2l").checked) {
     productsRecieved.sort((a, b) => {
       return b.productPrice - a.productPrice;
@@ -46,7 +46,7 @@ function fetchFromStorage() {
   if (document.getElementById("byName").checked) {
     document.querySelector(".displayProducts").style.display = "none";
     productsRecieved.sort((a, b) => {
-      return a.productName - b.productName;
+      return a.productName > b.productName;
     });
   }
   if (document.getElementById("byId").checked) {
@@ -64,6 +64,21 @@ function fetchFromStorage() {
 
   localStorage.setItem("productsList", JSON.stringify(productsRecieved));
   console.log(productsRecieved);
+  // if (document.getElementById("filterName").checked) {
+  //   for (let i = 0; i < productsRecieved.length; i++) {
+  //     if (
+  //       productsRecieved[i].productName
+  //         .toLowerCase()
+  //         .includes(searchValue.value)
+  //     ) {
+  //       searchArr.push(productsRecieved[i]);
+  //     }
+  //   }
+  //   // console.log(searchArr);
+  //   productsRecieved = searchArr;
+  //   console.log(".....prrr", productsRecieved);
+  //   searchArr = [];
+  // }
 
   // console.log(productsRecieved);
   for (let i = 0; i < productsRecieved.length - 1; i++) {
@@ -192,51 +207,12 @@ function validate() {
     fetchFromStorage();
   }
   location.reload();
+  // if (document.getElementById("filterName").checked) {
+  //   document.querySelectorAll(".displayProducts").style.display = "none";
+  //   fetchFromStorage();
+  // }
+  // if (!document.getElementById("filterName").checked) {
+  // } else {
+  //
+  // }
 }
-
-// function filter() {
-//   const searchedProducts = [];
-//   console.log(searchValue);
-//   if (searchValue.value) {
-//     searchToggle = 1;
-//     let myProducts = JSON.parse(localStorage.getItem("productsList"));
-//     for (let i = 0; i < myProducts.length; i++) {
-//       if (
-//         myProducts[i].productName.includes(
-//           searchValue.value.toLowerCase().trim()
-//         )
-//       ) {
-//         searchedProducts.push(myProducts[i]);
-//       }
-//     }
-//     console.log("searched:", searchedProducts);
-//     // fetchFromStorage();
-//     prevItems = JSON.parse(localStorage.getItem("productsList"));
-//     localStorage.setItem("filteredList", JSON.stringify(searchedProducts));
-//     searchToggle = 1;
-//     console.log("working");
-//     const filProd = JSON.parse(localStorage.getItem("filteredList"));
-
-//     // console.log(productsRecieved);
-//     console.log("filptod", filProd);
-//     for (let i = 0; i < filProd.length - 1; i++) {
-//       const parentProductDisplay = document.querySelector(".displayProducts");
-//       const clone = parentProductDisplay.cloneNode(true);
-//       parentProductDisplay.after(clone);
-//       console.log("inside");
-//     }
-//     const id = document.querySelectorAll(".idP");
-//     const pName = document.querySelectorAll(".nameP");
-//     const img = document.querySelectorAll(".productImg");
-//     const price = document.querySelectorAll(".priceP");
-//     const desc = document.querySelectorAll(".descP");
-//     for (let i = 0; i < filProd; i++) {
-//       id[i].textContent = filProd[i].productId;
-//       pName[i].textContent = filProd[i].productName.toUpperCase();
-//       img[i].src = filProd[i].productImg;
-//       price[i].textContent = filProd[i].productPrice;
-//       desc[i].textContent = filProd[i].productDesc;
-//     }
-//   }
-//   // location.reload();
-// }
