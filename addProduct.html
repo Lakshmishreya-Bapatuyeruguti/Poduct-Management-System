@@ -11,13 +11,18 @@
     <div class="container">
       <div class="navbar">
         <h1 class="title">ProZon</h1>
-        <a href="/index.html">View Products</a>
+        <a class="navLink" href="/index.html">View Products</a>
       </div>
       <div class="productForm">
         <form action="#" class="productsForm">
           <input type="text" placeholder="Product Id" readonly class="apId" />
           <input type="text" placeholder="Product Name" class="apName" />
-          <input type="file" value="" />
+          <input
+            type="text"
+            value=""
+            placeholder="Product Image URL"
+            class="apImg"
+          />
           <input type="text" placeholder="Product Price" class="apPrice" />
           <input type="text" placeholder="Product Description" class="apDesc" />
           <input
@@ -28,15 +33,17 @@
           />
         </form>
       </div>
-      <div class="displayProducts">
-        <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-        <p class="idP">Product Id:</p>
+      <div class="wrapper">
+        <div class="displayProducts">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+          <p class="idP para p1">Product Id:</p>
 
-        <p class="nameP">Product Name:</p>
-        <span>Product Image: <img class="productImg" /></span>
-        <p class="priceP">Product Price:</p>
-        <p class="descP">Product Desc:</p>
+          <p class="nameP para p2">Product Name:</p>
+          <img class="productImg" />
+          <p class="priceP para p3">Product Price:</p>
+          <p class="descP para p4">Product Desc:</p>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>

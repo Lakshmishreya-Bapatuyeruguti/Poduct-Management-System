@@ -2,9 +2,18 @@
   margin: 0;
   padding: 0;
 }
-.navabar {
+body {
+  background-color: #fcfafa;
+}
+.container {
+  height: max-content;
+  /* width: 500px; */
+}
+.navbar {
   display: flex;
   justify-content: space-around;
+  background-color: #005a9c;
+  height: 60px;
 }
 .productsForm {
   width: 30%;
@@ -13,4 +22,88 @@
   margin: 5px;
   display: flex;
   flex-direction: column;
+}
+.displayProducts {
+  background-color: white;
+  width: 60%;
+  margin: 10% 5%;
+  text-align: center;
+  border: 3px solid white;
+}
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
+}
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  margin: auto 0;
+}
+.para {
+  font-size: 21px;
+  padding: 5px;
+}
+.title {
+  margin: auto 0;
+  color: beige;
+}
+.descP {
+  font-size: 20px;
+}
+.p1 {
+  color: black;
+  font-size: 16px;
+}
+.p2 {
+  color: #012138;
+  font-weight: 900;
+}
+.p3 {
+  color: #025b02;
+  font-weight: 600;
+}
+.edBtn,
+.delBtn {
+  text-decoration: none;
+  color: #fff;
+  /* font-weight: 600; */
+  font-size: 16px;
+}
+.edit {
+  margin-top: 6px;
+  height: 30px;
+  width: 60px;
+  color: white;
+  background-color: rgb(68, 231, 68);
+  box-shadow: 3px 2px 3px rgb(39, 83, 39);
+  border: none;
+}
+.delete {
+  margin-top: 6px;
+  /* margin-right: 30px; */
+  height: 30px;
+  width: 60px;
+  color: white;
+  background-color: rgb(239, 103, 103);
+  box-shadow: 3px 2px 3px rgb(39, 83, 39);
+  border: none;
+  margin-bottom: 10px;
+}
+.productForm {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.productForm input {
+  margin: 2%;
+  height: 50px;
+  width: 100%;
+}
+.addOrEditBtn {
+  background-color: #005a9c;
+  color: white;
+  font-size: 20px;
 }

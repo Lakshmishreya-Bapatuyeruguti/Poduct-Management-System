@@ -1,5 +1,6 @@
 let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
-
+let searchValue = document.getElementById("searchVal");
+// let searchToggle=0;
 if (!productsAvailable) {
   const products = [
     {
@@ -13,10 +14,10 @@ if (!productsAvailable) {
   ];
   //setting to local strorage
   localStorage.setItem("productsList", JSON.stringify(products));
-  fetchFromStorage();
-} else {
-  fetchFromStorage();
+  // fetchFromStorage();
 }
+
+fetchFromStorage();
 
 function fetchFromStorage() {
   //getting from local storage
@@ -35,7 +36,7 @@ function fetchFromStorage() {
 
   for (let i = 0; i < productsRecieved.length; i++) {
     id[i].textContent += productsRecieved[i].productId;
-    pName[i].textContent += productsRecieved[i].productName;
+    pName[i].textContent += productsRecieved[i].productName.toUpperCase();
     img[i].src = productsRecieved[i].productImg;
     price[i].textContent += productsRecieved[i].productPrice;
     desc[i].textContent += productsRecieved[i].productDesc;
@@ -53,25 +54,24 @@ function addedProduct() {
 
   const sentProdId = document.querySelector(".apId");
   const sentProdName = document.querySelector(".apName");
-  // const sentProdImg = document.querySelector("");
+  const sentProdImg = document.querySelector(".apImg");
   const sentProdPrice = document.querySelector(".apPrice");
   const sentProdDesc = document.querySelector(".apDesc");
   const addProdObj = {
     productId: `${gId}`,
     productName: sentProdName.value,
-    productImg:
-      "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
+    productImg: sentProdImg.value,
     productPrice: sentProdPrice.value,
     productDesc: sentProdDesc.value,
   };
-
+  // "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100";
   if (changeBtn.value === "Save Changes") {
     let myProducts = JSON.parse(localStorage.getItem("productsList"));
 
     for (let i = 0; i < myProducts.length; i++) {
       if (myProducts[i].productId === sentProdId.value) {
         myProducts[i].productName = sentProdName.value;
-        // myProducts[i].productImg = sentProdImg.value;
+        myProducts[i].productImg = sentProdImg.value;
         myProducts[i].productPrice = sentProdPrice.value;
         myProducts[i].productDesc = sentProdDesc.value;
       }
@@ -95,7 +95,7 @@ for (let prod of dispProducts) {
     if (e.target.classList.contains("edit")) {
       const IdInp = document.querySelector(".apId");
       const prodNameInp = document.querySelector(".apName");
-      // const IdInp=document.querySelector(".apId")
+      const imgInp = document.querySelector(".apImg");
       const prodPriceInp = document.querySelector(".apPrice");
       const prodDescInp = document.querySelector(".apDesc");
       let currSelectedId =
@@ -106,6 +106,7 @@ for (let prod of dispProducts) {
         if (myProducts[i].productId === currSelectedId) {
           IdInp.value = myProducts[i].productId;
           prodNameInp.value = myProducts[i].productName;
+          imgInp.value = myProducts[i].productImg;
           prodPriceInp.value = myProducts[i].productPrice;
           prodDescInp.value = myProducts[i].productDesc;
           let changeBtn = document.querySelector(".addOrEditBtn");
