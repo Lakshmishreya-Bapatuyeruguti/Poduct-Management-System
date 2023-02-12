@@ -152,7 +152,7 @@ for (let prod of dispProducts) {
         e.target.previousElementSibling.previousElementSibling
           .previousElementSibling.previousElementSibling.previousElementSibling
           .previousElementSibling.previousElementSibling.textContent;
-      console.log("//", currSelectedId);
+      console.log(currSelectedId);
       let myProducts = JSON.parse(localStorage.getItem("productsList"));
       for (let i = 0; i < myProducts.length; i++) {
         if (myProducts[i].productId === currSelectedId) {
