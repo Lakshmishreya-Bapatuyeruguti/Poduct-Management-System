@@ -1,13 +1,33 @@
 let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
 let searchValue = document.getElementById("searchVal");
-let intial = 0;
-let searchArr = [];
-let prevItems;
-// let searchToggle=0;
 if (!productsAvailable) {
   const products = [
     {
-      productId: "100",
+      productId: "01",
+      productName: "laptop",
+      productImg:
+        "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
+      productPrice: "25000",
+      productDesc: "this is laptop",
+    },
+    {
+      productId: "02",
+      productName: "Lenevo Laptop",
+      productImg:
+        "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
+      productPrice: "45999",
+      productDesc: "this is a good lenovo laptop",
+    },
+    {
+      productId: "03",
+      productName: "Cricket Bat",
+      productImg:
+        "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
+      productPrice: "499",
+      productDesc: "this is good willow cricket bat",
+    },
+    {
+      productId: "04",
       productName: "laptop",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
@@ -15,72 +35,17 @@ if (!productsAvailable) {
       productDesc: "this is laptop",
     },
   ];
-  //setting to local strorage
   localStorage.setItem("productsList", JSON.stringify(products));
   fetchFromStorage();
-} else {
-  if (intial === 0) {
-    intial = 1;
-
-    fetchFromStorage();
-  } else {
-    localStorage.setItem("productsList", JSON.stringify(prevItems));
-  }
 }
+
+fetchFromStorage();
+
 function fetchFromStorage() {
   //getting from local storage
 
   let productsRecieved = JSON.parse(localStorage.getItem("productsList"));
-  if (document.getElementById("h2l").checked) {
-    productsRecieved.sort((a, b) => {
-      return b.productPrice - a.productPrice;
-    });
-    document.querySelector(".displayProducts").style.display = "none";
-  }
-  if (document.getElementById("l2h").checked) {
-    productsRecieved.sort((a, b) => {
-      return a.productPrice - b.productPrice;
-    });
-    document.querySelector(".displayProducts").style.display = "none";
-  }
-  if (document.getElementById("byName").checked) {
-    document.querySelector(".displayProducts").style.display = "none";
-    productsRecieved.sort((a, b) => {
-      return a.productName > b.productName;
-    });
-  }
-  if (document.getElementById("byId").checked) {
-    productsRecieved.sort((a, b) => {
-      return a.productId - b.productId;
-    });
-    document.querySelector(".displayProducts").style.display = "none";
-  }
-  if (document.getElementById("byId").checked) {
-    productsRecieved.sort((a, b) => {
-      return a.productId - b.productId;
-    });
-    document.querySelector(".displayProducts").style.display = "none";
-  }
 
-  localStorage.setItem("productsList", JSON.stringify(productsRecieved));
-  console.log(productsRecieved);
-  // if (document.getElementById("filterName").checked) {
-  //   for (let i = 0; i < productsRecieved.length; i++) {
-  //     if (
-  //       productsRecieved[i].productName
-  //         .toLowerCase()
-  //         .includes(searchValue.value)
-  //     ) {
-  //       searchArr.push(productsRecieved[i]);
-  //     }
-  //   }
-  //   // console.log(searchArr);
-  //   productsRecieved = searchArr;
-  //   console.log(".....prrr", productsRecieved);
-  //   searchArr = [];
-  // }
-
-  // console.log(productsRecieved);
   for (let i = 0; i < productsRecieved.length - 1; i++) {
     const parentProductDisplay = document.querySelector(".displayProducts");
     const clone = parentProductDisplay.cloneNode(true);
@@ -101,9 +66,8 @@ function fetchFromStorage() {
 }
 
 function addedProduct() {
-  //   console.log(ID);
   letImgVal = "";
-  //   ID = ID + 1;
+
   let gId = localStorage.getItem("id");
   localStorage.setItem("id", +gId + 1);
   gId = localStorage.getItem("id");
@@ -117,6 +81,12 @@ function addedProduct() {
   if (sentProdImg.value === "") {
     sentProdImg.value =
       "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100";
+  }
+  if (!sentProdName.value || !sentProdPrice.value || !sentProdDesc.value) {
+    return alert("Kindly Enter All Details Of Product");
+  }
+  if (isNaN(sentProdPrice.value)) {
+    return alert("Please enter Numeric value");
   }
   const addProdObj = {
     productId: `${gId}`,
@@ -160,7 +130,9 @@ for (let prod of dispProducts) {
       const prodPriceInp = document.querySelector(".apPrice");
       const prodDescInp = document.querySelector(".apDesc");
       let currSelectedId =
-        e.target.nextElementSibling.nextElementSibling.textContent;
+        e.target.previousElementSibling.previousElementSibling
+          .previousElementSibling.previousElementSibling.previousElementSibling
+          .textContent;
       let myProducts = JSON.parse(localStorage.getItem("productsList"));
 
       for (let i = 0; i < myProducts.length; i++) {
@@ -176,7 +148,10 @@ for (let prod of dispProducts) {
       }
     }
     if (e.target.classList.contains("delete")) {
-      let currSelectedId = e.target.nextElementSibling.textContent;
+      let currSelectedId =
+        e.target.previousElementSibling.previousElementSibling
+          .previousElementSibling.previousElementSibling.previousElementSibling
+          .previousElementSibling.textContent;
       console.log(currSelectedId);
       let myProducts = JSON.parse(localStorage.getItem("productsList"));
       for (let i = 0; i < myProducts.length; i++) {
@@ -190,29 +165,75 @@ for (let prod of dispProducts) {
   });
 }
 
-function validate() {
-  const allProducts = document.querySelectorAll(".displayProducts");
+function sortProducts() {
+  let items = document.querySelectorAll(".displayProducts");
   if (document.getElementById("h2l").checked) {
-    fetchFromStorage();
+    Array.from(items)
+      .sort(function (a, b) {
+        a = ~~a.querySelector(".priceP").innerText;
+        b = ~~b.querySelector(".priceP").innerText;
+        return b - a;
+      })
+      .forEach(function (n, i) {
+        n.style.order = i;
+      });
+    setTimeout(() => {
+      document.getElementById("h2l").checked = false;
+    }, 1000);
   }
-
   if (document.getElementById("l2h").checked) {
-    fetchFromStorage();
+    Array.from(items)
+      .sort(function (a, b) {
+        a = ~~a.querySelector(".priceP").innerText;
+        b = ~~b.querySelector(".priceP").innerText;
+        return a - b;
+      })
+      .forEach(function (n, i) {
+        n.style.order = i;
+      });
+    setTimeout(() => {
+      document.getElementById("l2h").checked = false;
+    }, 1000);
   }
   if (document.getElementById("byName").checked) {
-    fetchFromStorage();
+    Array.from(items)
+      .sort(function (a, b) {
+        a = a.querySelector(".nameP").innerText.toLowerCase();
+        b = b.querySelector(".nameP").innerText.toLowerCase();
+        return (a > b) - (a < b);
+      })
+      .forEach(function (n, i) {
+        n.style.order = i;
+      });
+    setTimeout(() => {
+      document.getElementById("byName").checked = false;
+    }, 1000);
   }
-
   if (document.getElementById("byId").checked) {
-    fetchFromStorage();
+    Array.from(items)
+      .sort(function (a, b) {
+        a = ~~a.querySelector(".idP").innerText;
+        b = ~~b.querySelector(".idP").innerText;
+        return a - b;
+      })
+      .forEach(function (n, i) {
+        n.style.order = i;
+      });
+    setTimeout(() => {
+      document.getElementById("byId").checked = false;
+    }, 1000);
   }
-  location.reload();
-  // if (document.getElementById("filterName").checked) {
-  //   document.querySelectorAll(".displayProducts").style.display = "none";
-  //   fetchFromStorage();
-  // }
-  // if (!document.getElementById("filterName").checked) {
-  // } else {
-  //
-  // }
+}
+
+function searchProduct() {
+  let input = searchValue.value;
+  input = input.toLowerCase().trim();
+  let product = document.getElementsByClassName("displayProducts");
+  for (i = 0; i < product.length; i++) {
+    if (!product[i].innerHTML.toLowerCase().trim().includes(input)) {
+      product[i].style.display = "none";
+    } else {
+      product[i].style.display = "inline-block";
+    }
+  }
 }

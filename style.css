@@ -16,7 +16,7 @@ body {
   height: 60px;
 }
 .productsForm {
-  width: 30%;
+  width: 35%;
 }
 .productsForm {
   margin: 5px;
@@ -28,7 +28,7 @@ body {
   width: 60%;
   margin: 10% 5%;
   text-align: center;
-  border: 3px solid white;
+  box-shadow: 1px 2px 1px 2px #d6e6f3;
 }
 .wrapper {
   display: grid;
@@ -38,8 +38,9 @@ body {
 }
 .navLink {
   color: #fff;
-  text-decoration: none;
+  text-decoration: underline;
   margin: auto 0;
+  font-size: 20px;
 }
 .para {
   font-size: 21px;
@@ -48,6 +49,7 @@ body {
 .title {
   margin: auto 0;
   color: beige;
+  font-style: oblique;
 }
 .descP {
   font-size: 20px;
@@ -63,6 +65,15 @@ body {
 .p3 {
   color: #025b02;
   font-weight: 600;
+  display: inline;
+}
+.p3s {
+  color: #025b02;
+  font-weight: 600;
+}
+.p4 {
+  padding: 5px 0;
+  color: gray;
 }
 .edBtn,
 .delBtn {
@@ -94,16 +105,95 @@ body {
 .productForm {
   display: flex;
   justify-content: center;
-  text-align: center;
+
   width: 100%;
 }
 .productForm input {
   margin: 2%;
-  height: 50px;
+  height: 40px;
   width: 100%;
+  padding: 2px;
 }
 .addOrEditBtn {
+  padding: 2px;
   background-color: #005a9c;
   color: white;
   font-size: 20px;
+}
+.sortBody {
+  /* display: flex; */
+  background-color: white;
+  width: 25%;
+
+  margin: auto;
+  margin-top: 2%;
+  border: 2px solid #456f8d;
+}
+
+.sortCheck {
+  margin: 1%;
+  padding: 5% 0%;
+}
+.sortBox {
+  /* display: flex;
+  flex-direction: column; */
+  width: 100%;
+  text-align: center;
+  color: #456f8d;
+  font-weight: 600;
+  padding: 2%;
+}
+.sc1 {
+  position: relative;
+  left: 7%;
+}
+.sc2 {
+  position: relative;
+  left: 4%;
+}
+.sc3 {
+  position: relative;
+  left: 0.5%;
+}
+.sc4 {
+  position: relative;
+  left: 0.8%;
+}
+.cbp {
+  margin: 1% 0;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: underline;
+}
+.fa1 {
+  position: relative;
+  right: 6%;
+}
+.fa2 {
+  position: relative;
+  right: 3%;
+}
+/* input [type="text"] {
+  margin: auto;
+} */
+.searchBox {
+  margin: auto 0%;
+}
+.fa-search {
+  color: #456f8d;
+  position: relative;
+  right: 15%;
+}
+#searchVal {
+  height: 25px;
+  outline: none;
+  border-radius: 1px;
+  border: none;
+  padding-left: 0.5%;
+  width: 88%;
+}
+.displayProducts:hover {
+  -webkit-transform: scale(0.6);
+  transform: scale(1.1);
 }

@@ -14,42 +14,75 @@
   <body>
     <div class="container">
       <div class="navbar">
-        <h1 class="title">ProZon</h1>
+        <h1 class="title">ProKart</h1>
         <div class="searchBox">
-          <input type="text" value="" id="searchVal" /><input
-            type="checkbox"
-            name=""
-            id="filterName"
-            onclick="validate()"
+          <input
+            type="text"
+            value=""
+            placeholder="Search Products"
+            id="searchVal"
+            onkeyup="searchProduct()"
           />
+          <i class="fa fa-search"></i>
         </div>
         <a class="navLink" href="/addProduct.html">Add Product</a>
       </div>
-      <div class="sortBox">
-        <label for="sH2L">High to Low </label>
-        <input type="checkbox" name="sH2L" id="h2l" onclick="validate() " />
-        <br />
-        <label for="sL2H">Low To High </label>
-        <input type="checkbox" name="sL2H" id="l2h" onclick="validate() " />
-        <br />
-        <label for="sH2L">By Name</label>
-        <input type="checkbox" name="sH2L" id="byName" onclick="validate() " />
-        <br />
-        <label for="sL2H">By Id</label>
-        <input type="checkbox" name="sL2H" id="byId" onclick="validate() " />
-      </div>
-      <div class="wrapper">
-        <div class="displayProducts">
-          <p class="idP para p1">Product Id:</p>
-          <img class="productImg" />
-          <p class="nameP para p2"></p>
+      <div class="sortBody">
+        <div class="sortBox">
+             <i class="fa fa-filter fa1"></i>   <label for="sL2H">By Id</label>
+          <input
+            type="checkbox"
+            name="sL2H"
+            id="byId"
+            onclick="sortProducts() "
+            class="sortCheck sc1"
+          />
+      
+          <br>
+               <i class="fa fa-filter fa2"></i> <label for="sH2L">By Name</label>
+          <input
+            type="checkbox"
+            name="sH2L"
+            id="byName"
+            onclick="sortProducts() "
+            class="sortCheck sc2"
+          />
+         
+         <p class="cbp">   BY PRICES:</p>
+          <i class="fa fa-filter"></i> <label for="sL2H">Low To High </label>
+          <input
+            type="checkbox"
+            name="sL2H"
+            id="l2h"
+            onclick="sortProducts() "
+            class="sortCheck sc3"
+          />
+          <br>
+    
+         <i class="fa fa-filter"></i><label for="sH2L"> High to Low </label>
+          <input
+            type="checkbox"
+            name="sH2L"
+            id="h2l"
+            onclick="sortProducts() "
+            class="sortCheck sc4"
+          />
 
-          <p class="priceP para p3">$</p>
+        </div>
+</div>
+        <div class="wrapper">
+          <div class="displayProducts">
+            <p class="idP para p1">Product Id:</p>
+            <img class="productImg" />
+            <p class="nameP para p2"></p>
 
-          <p class="descP para p4"></p>
-          <!-- <button class="edit">
+            <span class=" p3s">₹</span><p class="priceP para p3"></p>
+
+            <p class="descP para p4"></p>
+            <!-- <button class="edit">
             <a href="/addProduct.html" class="edBtn">Modify</a>
           </button> -->
+          </div>
         </div>
       </div>
     </div>
