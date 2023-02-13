@@ -1,9 +1,11 @@
+//checking if any data in local storage
 let productsAvailable = JSON.parse(localStorage.getItem("productsList"));
 let searchValue = document.getElementById("searchVal");
 if (!productsAvailable) {
+  // Some demo default products are added
   const products = [
     {
-      productId: "01",
+      productId: "875",
       productName: "laptop",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
@@ -11,7 +13,7 @@ if (!productsAvailable) {
       productDesc: "this is laptop",
     },
     {
-      productId: "02",
+      productId: "965",
       productName: "Lenevo Laptop",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
@@ -19,7 +21,7 @@ if (!productsAvailable) {
       productDesc: "this is a good lenovo laptop",
     },
     {
-      productId: "04",
+      productId: "319",
       productName: "Apple Iphone",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100",
@@ -27,7 +29,7 @@ if (!productsAvailable) {
       productDesc: "this is brand new iPhone",
     },
     {
-      productId: "04",
+      productId: "414",
       productName: "Shirt & Kurtas",
       productImg:
         "https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png?q=100",
@@ -36,14 +38,13 @@ if (!productsAvailable) {
     },
   ];
   localStorage.setItem("productsList", JSON.stringify(products));
+  location.reload();
   fetchFromStorage();
 }
 
 fetchFromStorage();
-
+//Fetching Products from local storage
 function fetchFromStorage() {
-  //getting from local storage
-
   let productsRecieved = JSON.parse(localStorage.getItem("productsList"));
 
   for (let i = 0; i < productsRecieved.length - 1; i++) {
@@ -64,7 +65,7 @@ function fetchFromStorage() {
     desc[i].textContent = productsRecieved[i].productDesc;
   }
 }
-
+//Add Products Function
 function addedProduct() {
   letImgVal = "";
 
@@ -95,7 +96,7 @@ function addedProduct() {
     productPrice: sentProdPrice.value,
     productDesc: sentProdDesc.value,
   };
-  // ;
+  // Edit the product
   if (changeBtn.value === "Save Changes") {
     let myProducts = JSON.parse(localStorage.getItem("productsList"));
 
@@ -107,7 +108,6 @@ function addedProduct() {
         myProducts[i].productDesc = sentProdDesc.value;
       }
     }
-
     localStorage.setItem("productsList", JSON.stringify(myProducts));
     changeBtn.value = "Add Product";
     document.querySelector(".productsForm").reset();
@@ -118,7 +118,6 @@ function addedProduct() {
   location.reload();
 }
 
-// const pes=previousElementSibling
 let dispProducts = document.querySelectorAll(".displayProducts");
 for (let prod of dispProducts) {
   prod.addEventListener("click", (e) => {
@@ -147,6 +146,7 @@ for (let prod of dispProducts) {
         }
       }
     }
+    // Delete the product function
     if (e.target.classList.contains("delete")) {
       let currSelectedId =
         e.target.previousElementSibling.previousElementSibling
@@ -164,7 +164,7 @@ for (let prod of dispProducts) {
     }
   });
 }
-
+// Sort the products
 function sortProducts() {
   let items = document.querySelectorAll(".displayProducts");
   if (document.getElementById("h2l").checked) {
@@ -224,7 +224,7 @@ function sortProducts() {
     }, 1000);
   }
 }
-
+// Search Product
 function searchProduct() {
   let input = searchValue.value;
   input = input.toLowerCase().trim();
