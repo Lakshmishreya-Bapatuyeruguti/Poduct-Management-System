@@ -19,20 +19,20 @@ if (!productsAvailable) {
       productDesc: "this is a good lenovo laptop",
     },
     {
-      productId: "03",
-      productName: "Cricket Bat",
+      productId: "04",
+      productName: "Apple Iphone",
       productImg:
-        "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
-      productPrice: "499",
-      productDesc: "this is good willow cricket bat",
+        "https://rukminim1.flixcart.com/flap/128/128/image/22fddf3c7da4c4f4.png?q=100",
+      productPrice: "6599",
+      productDesc: "this is brand new iPhone",
     },
     {
       productId: "04",
-      productName: "laptop",
+      productName: "Shirt & Kurtas",
       productImg:
-        "https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100",
-      productPrice: "25000",
-      productDesc: "this is laptop",
+        "https://rukminim1.flixcart.com/flap/128/128/image/c12afc017e6f24cb.png?q=100",
+      productPrice: "1999",
+      productDesc: "this is a dress by genX",
     },
   ];
   localStorage.setItem("productsList", JSON.stringify(products));
