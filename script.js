@@ -111,11 +111,15 @@ function addedProduct() {
     localStorage.setItem("productsList", JSON.stringify(myProducts));
     changeBtn.value = "Add Product";
     document.querySelector(".productsForm").reset();
+    alert("Product Updated Successfully");
+    location.reload();
   } else {
     productsAvailable.push(addProdObj);
     localStorage.setItem("productsList", JSON.stringify(productsAvailable));
+    document.querySelector(".productsForm").reset();
+    alert(" New Product Added Successfully");
+    location.reload();
   }
-  location.reload();
 }
 
 let dispProducts = document.querySelectorAll(".displayProducts");

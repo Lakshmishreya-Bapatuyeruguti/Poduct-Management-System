@@ -197,3 +197,6 @@ body {
   -webkit-transform: scale(0.6);
   transform: scale(1.1);
 }
+.edBtn {
+  font-size: 14px;
+}
