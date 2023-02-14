@@ -174,8 +174,8 @@ function sortProducts() {
         b = ~~b.querySelector(".priceP").innerText;
         return b - a;
       })
-      .forEach(function (n, i) {
-        n.style.order = i;
+      .forEach(function (product, i) {
+        product.style.order = i;
       });
     setTimeout(() => {
       document.getElementById("h2l").checked = false;
@@ -188,8 +188,8 @@ function sortProducts() {
         b = ~~b.querySelector(".priceP").innerText;
         return a - b;
       })
-      .forEach(function (n, i) {
-        n.style.order = i;
+      .forEach(function (product, i) {
+        product.style.order = i;
       });
     setTimeout(() => {
       document.getElementById("l2h").checked = false;
@@ -202,8 +202,8 @@ function sortProducts() {
         b = b.querySelector(".nameP").innerText.toLowerCase();
         return (a > b) - (a < b);
       })
-      .forEach(function (n, i) {
-        n.style.order = i;
+      .forEach(function (product, i) {
+        product.style.order = i;
       });
     setTimeout(() => {
       document.getElementById("byName").checked = false;
@@ -216,8 +216,8 @@ function sortProducts() {
         b = ~~b.querySelector(".idP").innerText;
         return a - b;
       })
-      .forEach(function (n, i) {
-        n.style.order = i;
+      .forEach(function (product, i) {
+        product.style.order = i;
       });
     setTimeout(() => {
       document.getElementById("byId").checked = false;
